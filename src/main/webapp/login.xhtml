@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:o="http://omnifaces.org/ui">
+	<h:form>
+		<div class="ui-field-contain ui-body ui-br" data-role="fieldcontain">
+			<label class="ui-input-text" for="mini">Phone#:</label>
+			<h:inputText id="mini"
+				class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini"
+				type="text" name="name" placeholder="Your Phone#" 
+				value="#{login.msisdn}"
+				validatorMessage="Login failed: Invalid Phone Format">
+				<f:validateRegex pattern="(41|42|\+41|\+42|0041|0042|0)(\d){8,9}"/>
+			</h:inputText>
+		</div>
+		<h:messages style="color: red;"/>
+		<h:commandLink
+			class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-up-c"
+			data-icon="arrow-r" data-role="button"
+			data-corners="true" data-shadow="true" data-iconshadow="true"
+			data-wrapperels="span" data-iconpos="right" value=""
+			action="#{login.login()}">
+			<span class="ui-btn-inner ui-btn-corner-all"> <span
+				class="ui-btn-text">Enter</span> <span
+				class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+			</span>
+		</h:commandLink>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,10 @@
+
+.footer_left {
+   float: left;
+   margin-left: 8px;
+}
+
+.footer_right {
+   float: right;
+   margin-right: 8px;
+}

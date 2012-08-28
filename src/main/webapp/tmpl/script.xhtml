@@ -1,0 +1,51 @@
+<script>
+$( document ).ready( function() {
+
+    $('a[href*=#deleteSubscription]').click(function(event) {
+        event.preventDefault();
+        id = getParameterByName('subscriptionId');
+        deleteSubscription({"operation":"deleteSubscription","id":id});
+    });
+    
+    $('a[href*=#cancelSubscription]').click(function(event) {
+        event.preventDefault();
+        id = getParameterByName('subscriptionId');
+        deleteSubscription({"operation":"cancelSubscription","id":id});
+    });
+                    
+                    $('a[href=#reenter]').click(function(event){
+                        event.preventDefault();
+						logout();
+	                });
+	                
+                    $('a[href=#home]').click(function(event){
+                        event.preventDefault();
+						home();
+	                });		
+	                
+                    $('#login').submit(function(event) {
+                        event.preventDefault();
+
+                        var loginData = $(this).serializeObject();
+                        //Workaround for jQM adding a hidden field for submit buttons which then
+                        //gets serialized into the form values
+                        if ( loginData.login ) {
+                            delete loginData.login;
+                        }
+                        login(loginData);
+                    });			                
+				});
+
+function getParameterByName(name)
+{
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&#38;]" + name + "=([^&#38;#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+</script>
