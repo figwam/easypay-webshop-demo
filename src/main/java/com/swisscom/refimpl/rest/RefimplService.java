@@ -1,14 +1,4 @@
-/*
- * Copyright 2010-2012 swisscom.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- *
- * This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
- */
+
 package com.swisscom.refimpl.rest;
 
 import java.io.InputStream;
@@ -23,14 +13,13 @@ import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 
-import com.swisscom.refimpl.control.UserManager;
 import com.swisscom.refimpl.login.Login;
-
+import com.swisscom.refimpl.login.UserManager;
 
 /**
- * 
- * @author <a href="alexander.schamne@swisscom.com">Alexander Schamne</a>
- *
+ * JAX-RS Example
+ * <p/>
+ * This class produces a RESTful service to read/write the contents of the members table.
  */
 @Path("/refimpl")
 public class RefimplService {

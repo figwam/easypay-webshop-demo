@@ -1,20 +1,10 @@
-/*
- * Copyright 2010-2012 swisscom.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- *
- * This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
- */
 package com.swisscom.refimpl.login;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
@@ -27,12 +17,6 @@ import com.swisscom.refimpl.control.ServiceControl;
 import com.swisscom.refimpl.model.Service;
 import com.swisscom.refimpl.model.Subscription;
 
-/**
- * User login
- * 
- * @author <a href="alexander.schamne@swisscom.com">Alexander Schamne</a>
- *
- */
 @SessionScoped
 @Named
 public class Login implements Serializable {

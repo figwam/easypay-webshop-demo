@@ -1,13 +1,10 @@
-/*
- * Copyright 2010-2012 swisscom.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- *
- * This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+/**
+ (c) Copyright Swisscom (Schweiz) AG. All rights reserved.
+
+ This product is the proprietary and sole property of Swisscom (Schweiz) AG
+ Use, duplication or dissemination is subject to prior written consent of
+ Swisscom (Schweiz) AG.
+
  */
 package com.swisscom.refimpl.util;
 
@@ -42,14 +39,18 @@ import com.swisscom.rest.security.RequestSignInformations;
 import com.swisscom.rest.security.Signer;
 
 /**
+ * The class BaseRequests.java.
  * 
- * @author <a href="alexander.schamne@swisscom.com">Alexander Schamne</a>
- *
+ * @author TGDSCALD
  */
 @Stateless
 public class BaseRequests {
 
-	public static final String BASE_URL = "https://tpe-staging.swisscom.ch/ce-rest-service";
+	public static final String SEC_KEY = "uV3F3YluFJax1cknvbcGwgjvx4QpvB+leU8dUj2o";
+	
+	public static final String MERCHANT_ID = "CH";
+
+	public static final String BASE_URL = "https://tpe-int.swisscom.ch/ce-rest-service";
 
 	public static final String ACCOUNTS_URL = BASE_URL + "/accounts";
 
@@ -77,7 +78,7 @@ public class BaseRequests {
 
 		String sig;
 		try {
-			sig = new Signer().buildSignature(reqSign, Constants.SEC_KEY);
+			sig = new Signer().buildSignature(reqSign, SEC_KEY);
 			request.addRequestHeader("x-scs-signature", sig);
 			request.addRequestHeader("x-scs-date", reqSign.getDate());
 			if (data != null) {

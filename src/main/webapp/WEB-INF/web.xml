@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="false" version="3.0">
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.jsf</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>health</servlet-name>
-    <jsp-file>/health.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>health</servlet-name>
-    <url-pattern>/health</url-pattern>
-  </servlet-mapping>
-  <session-config>
-    <session-timeout>30</session-timeout>
-  </session-config>
+
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         metadata-complete="false">
+		 
+    <!-- Activate the JSF 2.0 servlet -->
+    <!-- The JSF servlet declaration and mapping are not required for GlassFish V3 -->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Tell the context which URLs to process as facelets.  -->
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+	 <servlet>
+		<servlet-name>health</servlet-name>
+		<jsp-file>/health.jsp</jsp-file>
+	 </servlet>
+	 <servlet-mapping>
+			  <servlet-name>health</servlet-name>
+			  <url-pattern>/health</url-pattern>
+	 </servlet-mapping>
+	 <!--
+	 <security-constraint>
+		<web-resource-collection>
+			<web-resource-name>No Access</web-resource-name>
+			<description>Protects resources</description>
+			<url-pattern>/list.jsf</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsf</form-login-page>
+			<form-error-page>/login.jsf</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<role-name>admin</role-name>
+	</security-role>
+	-->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+         
 </web-app>
+

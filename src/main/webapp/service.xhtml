@@ -9,7 +9,6 @@
 	template="tmpl/template.xhtml">
 	<ui:define name="contentInsert">
 		<h:form>
-			<img src="#{serviceControl.img(0, userManager.service.serviceId.hashCode())}" />
 			<p>Id: #{userManager.service.serviceId}</p>
 			<p>Name: #{userManager.service.serviceName}</p>
 			<p>Amount: #{userManager.service.amount}</p>
@@ -19,58 +18,20 @@
 			<c:if test="#{userManager.service.isRecurrent}">
 				<p>Duration: #{userManager.service.humanReadableDuration}</p>
 			</c:if>
-			<hr/>
-			<div data-role="fieldcontain">
-				<label for="basic">One Phase Purchase (automatic capture by Easypay)</label><br/>
+			<p>
 				<a
 					class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b"
 					data-inline="true" data-theme="b" data-icon="check"
 					data-role="button" data-corners="true"
 					data-shadow="true" data-iconshadow="true" data-wrapperels="span"
-					href="#{userManager.doCheckoutOnePhase()}">
+					href="#{userManager.doCheckout()}">
 					<span class="ui-btn-inner ui-btn-corner-all"> 
 						<span class="ui-btn-text">Purchase</span> 
 						<span class="ui-icon ui-icon-check ui-icon-shadow"></span>
 					</span>
 				</a>
-			</div>
-			<hr/>
-			<div data-role="fieldcontain">
-				<label for="basic">Two Phase Purchase (manual capture by RefImpl)</label><br/>
-				<a
-					class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b"
-					data-inline="true" data-theme="b" data-icon="check"
-					data-role="button" data-corners="true"
-					data-shadow="true" data-iconshadow="true" data-wrapperels="span"
-					href="#{userManager.doCheckoutTwoPhase()}">
-					<span class="ui-btn-inner ui-btn-corner-all"> 
-						<span class="ui-btn-text">Purchase</span> 
-						<span class="ui-icon ui-icon-check ui-icon-shadow"></span>
-					</span>
-				</a>
-			</div>
-			<hr/>
-			<!-- 
-			
-			TODO
-			
-			<div data-role="fieldcontain">
-				<label for="basic">Two Phase Purchase with discrete amount</label><br/>
-				<input type="number" name="amount" pattern="[0-9]*" id="number-pattern" value="" placeholder="pattern: [0-9]*" />
-				<br/>
-				<a
-					class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b"
-					data-inline="true" data-theme="b" data-icon="check"
-					data-role="button" data-corners="true"
-					data-shadow="true" data-iconshadow="true" data-wrapperels="span"
-					href="#{userManager.doCheckoutTwoPhase()}">
-					<span class="ui-btn-inner ui-btn-corner-all"> 
-						<span class="ui-btn-text">Purchase</span> 
-						<span class="ui-icon ui-icon-check ui-icon-shadow"></span>
-					</span>
-				</a>
-			</div>
-			 -->
+				
+			</p>
 		</h:form>
 	</ui:define>
 </ui:composition>

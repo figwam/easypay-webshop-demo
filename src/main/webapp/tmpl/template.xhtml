@@ -121,14 +121,7 @@
 				}]);
 			</script>
 		</h:head>
-		<c:if test="#{not checkConfig.wellConfigured}">
-			<h:body id="body">
-				<p style="color: red;">Warning: Your Easypay Webapp Demo is not properly configured.</p>
-				<p style="color: red;">Please set the system properties: 'sec.key' and 'merchant.id'.</p>
-				<p style="color: blue;">e.g. JAVA_OPTS = $JAVA_OPTS -Dmerchant.id=XYZ -Dsec.key=my_very_top_secret</p>
-			</h:body>
-		</c:if>
-		<c:if test="#{checkConfig.wellConfigured and login.loggedIn}">
+		<c:if test="#{login.loggedIn}">
 			<h:body id="body">
 				<div data-role="page" id="page1" data-add-back-btn="true">
 					<!-- Header -->
@@ -156,7 +149,7 @@
 					</div>
 			</h:body>
 		</c:if>
-		<c:if test="#{checkConfig.wellConfigured and not login.loggedIn}">
+		<c:if test="#{not login.loggedIn}">
 			<h:body id="body">
 				<div data-role="page" id="page1" data-add-back-btn="true">
 					<!-- Header -->

@@ -1,20 +1,15 @@
-/*
- * Copyright 2010-2012 swisscom.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- *
- * This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+/**
+ (c) Copyright Swisscom (Schweiz) AG. All rights reserved.
+
+ This product is the proprietary and sole property of Swisscom (Schweiz) AG
+ Use, duplication or dissemination is subject to prior written consent of
+ Swisscom (Schweiz) AG.
+
  */
 package com.swisscom.rest.security;
 
-
 /**
- * 
- * @author <a href="alexander.schamne@swisscom.com">Alexander Schamne</a>
+ * @author tgdscald
  *
  */
 public class RequestTimeOddException extends Exception {
