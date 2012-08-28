@@ -15,7 +15,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
@@ -58,11 +57,11 @@ public class Login implements Serializable {
 	
 	private User currentUser;
 	
-	@PostConstruct
-	public void init() {
-		msisdn = "0795932514";
-		login();
-	}
+//	@PostConstruct
+//	public void init() {
+//		msisdn = "0795932514";
+//		login();
+//	}
 
 	public String login() {
 		if (msisdn.matches(MSISDN_PATTERN)){

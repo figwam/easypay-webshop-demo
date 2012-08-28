@@ -30,6 +30,7 @@ import com.swisscom.refimpl.model.Services;
 import com.swisscom.refimpl.model.Subscription;
 import com.swisscom.refimpl.model.Subscriptions;
 import com.swisscom.refimpl.util.BaseRequests;
+import com.swisscom.refimpl.util.Constants;
 
 /**
  * 
@@ -58,7 +59,7 @@ public class ServiceControl implements Serializable {
 	public List<Service> retrieveServices() {
 		List<GetMethod> out = new ArrayList<GetMethod>();
 		try {
-			requestor.retrieveServices(BaseRequests.MERCHANT_ID, true, out);
+			requestor.retrieveServices(Constants.MERCHANT_ID, true, out);
 			ObjectMapper mapper = new ObjectMapper();
 			Services srvs = mapper.readValue(out.get(0).getResponseBody(),
 					Services.class);
@@ -74,7 +75,7 @@ public class ServiceControl implements Serializable {
 	public void commitSubscription(String sId) {
 		try {
 			List<PutMethod> out = new ArrayList<PutMethod>();
-			requestor.commitSubscription(BaseRequests.MERCHANT_ID, sId, out);
+			requestor.commitSubscription(Constants.MERCHANT_ID, sId, out);
 		} catch (Exception e) {
 			// TODO: Catch right Exception and handle it
 			throw new RuntimeException(e);
@@ -84,7 +85,7 @@ public class ServiceControl implements Serializable {
 	public List<Subscription> retrieveSubscriptionsForMsisdn(String msisdn) {
 		try {
 			List<GetMethod> out = new ArrayList<GetMethod>();
-			int rCode = requestor.retrieveSubscriptions(msisdn, BaseRequests.MERCHANT_ID, null, out);
+			int rCode = requestor.retrieveSubscriptions(msisdn, Constants.MERCHANT_ID, null, out);
 			ObjectMapper mapper = new ObjectMapper();
 			log.info("Got response code ["+rCode+"] ");
 			if (rCode == HTTP_NO_CONTENT) {
@@ -106,7 +107,7 @@ public class ServiceControl implements Serializable {
 		try {
 			log.info("Get info for service: " + id);
 			List<GetMethod> out = new ArrayList<GetMethod>();
-			requestor.retrieveServiceByUri(BaseRequests.MERCHANT_ID, BaseRequests.SERVICES_URL
+			requestor.retrieveServiceByUri(Constants.MERCHANT_ID, BaseRequests.SERVICES_URL
 					+ "/" + id, out);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper
@@ -140,7 +141,7 @@ public class ServiceControl implements Serializable {
 	public void cancelSubscription(String sId) {
 		try {
 			List<PutMethod> out = new ArrayList<PutMethod>();
-			requestor.cancelSubscription(BaseRequests.MERCHANT_ID, sId, out);
+			requestor.cancelSubscription(Constants.MERCHANT_ID, sId, out);
 		} catch (Exception e) {
 			// TODO: Catch right Exception and handle it
 			throw new RuntimeException(e);
@@ -151,7 +152,7 @@ public class ServiceControl implements Serializable {
 		try {
 			log.info("Get info for service: " + id);
 			List<GetMethod> out = new ArrayList<GetMethod>();
-			requestor.retrieveSubscriptionByUri(BaseRequests.MERCHANT_ID, BaseRequests.SUBSCRIPTIONS_URL
+			requestor.retrieveSubscriptionByUri(Constants.MERCHANT_ID, BaseRequests.SUBSCRIPTIONS_URL
 					+ "/" + id, out);
 			ObjectMapper mapper = new ObjectMapper();
 			String r = new String(out.get(0).getResponseBody());
@@ -166,7 +167,7 @@ public class ServiceControl implements Serializable {
 	public void deleteSubscription(String sId) {
 		try {
 			List<DeleteMethod> out = new ArrayList<DeleteMethod>();
-			requestor.deleteSubscription(BaseRequests.MERCHANT_ID, sId, out);
+			requestor.deleteSubscription(Constants.MERCHANT_ID, sId, out);
 		} catch (Exception e) {
 			// TODO: Catch right Exception and handle it
 			throw new RuntimeException(e);

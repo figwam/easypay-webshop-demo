@@ -49,11 +49,7 @@ import com.swisscom.rest.security.Signer;
 @Stateless
 public class BaseRequests {
 
-	public static final String SEC_KEY = System.getProperty("sec.key"); //Your SEC_KEY here
-	
-	public static final String MERCHANT_ID = System.getProperty("merchant.id");//Your MERCHANT_ID here
-
-	public static final String BASE_URL = "https://tpe-int.swisscom.ch/ce-rest-service";
+	public static final String BASE_URL = "https://tpe-staging.swisscom.ch/ce-rest-service";
 
 	public static final String ACCOUNTS_URL = BASE_URL + "/accounts";
 
@@ -81,7 +77,7 @@ public class BaseRequests {
 
 		String sig;
 		try {
-			sig = new Signer().buildSignature(reqSign, SEC_KEY);
+			sig = new Signer().buildSignature(reqSign, Constants.SEC_KEY);
 			request.addRequestHeader("x-scs-signature", sig);
 			request.addRequestHeader("x-scs-date", reqSign.getDate());
 			if (data != null) {

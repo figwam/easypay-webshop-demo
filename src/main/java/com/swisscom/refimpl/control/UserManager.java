@@ -21,18 +21,11 @@ import com.swisscom.refimpl.login.User;
 import com.swisscom.refimpl.model.CheckoutRequestItem;
 import com.swisscom.refimpl.model.Service;
 import com.swisscom.refimpl.model.Subscription;
-import com.swisscom.refimpl.util.BaseRequests;
-import com.swisscom.rest.security.Constants;
+import com.swisscom.refimpl.util.Constants;
 import com.swisscom.rest.security.SignatureException;
 
 @Named
 public class UserManager {
-
-	private static final String REFIMPL_HOST = System.getProperty("refimpl.host","refimpl-alex.rhcloud.com");
-
-	private static final String REFIMPL_PORT = System.getProperty("refimpl.port","80");
-
-	private static final String REFIMPL_PATH = System.getProperty("refimpl.path","");
 
 	private static final String PURCHASE_STATUS_SUCCESS = "success";
 
@@ -138,7 +131,7 @@ public class UserManager {
 			String coItem = ri.toJson();
 			byte[] coItemb64 = Base64.encodeBase64(coItem.getBytes("UTF-8"));
 			byte[] signb64 = Base64.encodeBase64(sign(coItem.getBytes("UTF-8"),
-					BaseRequests.SEC_KEY.getBytes("UTF-8")));
+					Constants.SEC_KEY.getBytes("UTF-8")));
 			String coUrl = "https://tpe-int.swisscom.ch/checkout/CheckoutPage.seam?signature="
 					+ urlEncode(new String(signb64),false)
 					+ "&checkoutRequestItem="
@@ -196,7 +189,7 @@ public class UserManager {
 					String coItem = new String(Base64.decodeBase64(checkoutResponseItem.getBytes("UTF-8")));
 					log.info("Checkout response: "+coItem);
 					byte[] signb64 = Base64.encodeBase64(sign(coItem.getBytes("UTF-8"),
-							BaseRequests.SEC_KEY.getBytes("UTF-8")));
+							Constants.SEC_KEY.getBytes("UTF-8")));
 					log.info("Checkout signature expected: "+new String(signb64));
 					log.info("Checkout signature received: "+signature);
 				}
@@ -222,7 +215,7 @@ public class UserManager {
 	}
 
 	private void serviceToCheckoutItem(Service service, CheckoutRequestItem ri) {
-		String backUrl = "http://"+REFIMPL_HOST+""+(REFIMPL_PORT.equals("80")?"":":"+REFIMPL_PORT)+""+(REFIMPL_PATH.equals("")?"":"/"+REFIMPL_PATH);
+		String backUrl = "http://"+Constants.REFIMPL_HOST+""+(Constants.REFIMPL_PORT.equals("80")?"":":"+Constants.REFIMPL_PORT)+""+(Constants.REFIMPL_PATH.equals("")?"":"/"+Constants.REFIMPL_PATH);
 		ri.setAdultContent(false);
 		ri.setAmount(new BigDecimal(service.getAmount()));
 		ri.setBillingText(service.getServiceId());

@@ -9,7 +9,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package com.swisscom.rest.security;
+package com.swisscom.refimpl.util;
 
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeParser;
@@ -20,6 +20,32 @@ import org.joda.time.format.DateTimeParser;
  *
  */
 public class Constants {
+	
+	
+    /* **************************************************************** 
+	 * This sample App is for demonstration purposes only.
+	 * 
+     * It is not secure to embed your credentials into source code!
+     * 
+     * Please keep your secure key always internal. Do never commit/push
+     * your key on public repositories!
+     ******************************************************************/
+	public static final String SEC_KEY = System.getProperty("sec.key","Your_SEC_KEY_here"); //Your SEC_KEY here	
+	public static final String MERCHANT_ID = System.getProperty("merchant.id","Your_MERCHANT_ID_here");//Your MERCHANT_ID here
+	
+	
+	
+
+    /* **************************************************************** 
+	 * Set the back urls for your app here
+     ******************************************************************/
+	public static final String REFIMPL_HOST = System.getProperty("refimpl.host","localhost");
+	public static final String REFIMPL_PORT = System.getProperty("refimpl.port","8080");
+	public static final String REFIMPL_PATH = System.getProperty("refimpl.path","easypay-webshop-demo");
+	
+	
+	
+	
 
 	public static final String RFC_822_DATE_FORMAT_TZ_GMT = "EEE, dd MMM yyyy HH:mm:ss Z";
 

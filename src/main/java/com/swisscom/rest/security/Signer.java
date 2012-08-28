@@ -27,6 +27,8 @@ import org.joda.time.format.DateTimeFormatterBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.swisscom.refimpl.util.Constants;
+
 
 /**
  * 
